@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { Field } from 'formik';
 
 export interface InputFieldProps
