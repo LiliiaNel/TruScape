@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Company {
+  id            String       @id @default(cuid())
+  title         String
+  description   String?
+  status        CompanyStatus
+  joinedDate    DateTime?
+  hasPromotions Boolean      @default(false)
+  categoryId    String?
+  categoryTitle String?
+  countryId     String?
+  countryTitle  String?
+  avatar        String?
+
+  @@map("companies")
+}
+
+enum CompanyStatus {
+  active
+  notActive
+  pending
+  suspended
+}
+
+model Promotion {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  discount    Float
+  companyId   String
+  company    Company   @relation(fields: [companyId], references: [id])
+  avatar      String?
+}
