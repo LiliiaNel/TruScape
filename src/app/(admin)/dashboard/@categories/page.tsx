@@ -1,6 +1,6 @@
 import StatCard, { StatCardType } from '@/app/components/stat-card';
-import { getCategories, getCompanies } from '@/lib/api';
-import getCountById from '@/lib/utils/getCountById';
+import {Company, getCategories, getCompanies} from '@/lib/api';
+import {getCountById} from '@/lib/utils/getCountById';
 import DashboardCard from '@/app/components/dashboard-card';
 
 export interface PageProps {}
@@ -8,7 +8,8 @@ export interface PageProps {}
 export default async function Page({}: PageProps) {
     const categories = await getCategories();
     const companies = await getCompanies();
-    const counts = getCountById(companies, 'categoryId');
+    const companiesWithCategory = companies.filter((c) => c.categoryId !== null);
+    const counts = getCountById(companiesWithCategory, 'categoryId');
 
     return (
         <DashboardCard label="Categories of companies">

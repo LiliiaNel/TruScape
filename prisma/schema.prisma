@@ -14,6 +14,9 @@ model Company {
   status        CompanyStatus
   joinedDate    DateTime?
   hasPromotions Boolean      @default(false)
+  promotions    Promotion[]
+  sold          Int    @default(0)
+  income        Float  @default(0)
   categoryId    String?
   categoryTitle String?
   countryId     String?

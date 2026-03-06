@@ -44,3 +44,8 @@ export { Prisma }
  * 
  */
 export type Company = Prisma.CompanyModel
+/**
+ * Model Promotion
+ * 
+ */
+export type Promotion = Prisma.PromotionModel

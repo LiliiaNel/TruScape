@@ -11,7 +11,7 @@ export default async function Page({}: PageProps) {
 
     await queryClient.prefetchQuery({
         queryKey: ['companies'],
-        queryFn: () => getCompanies({ cache: 'no-store' }),
+        queryFn: () => getCompanies(),
         staleTime: 10 * 1000,
     });
 

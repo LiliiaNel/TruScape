@@ -37,6 +37,8 @@ export default function PromotionForm({companyId, onSubmit,}: PromotionFormProps
         enabled: !!companyId,
     });
 
+    // useMutation - hook like useQuery but for post/create/delete
+
     const { mutateAsync, isPending } = useMutation({
         mutationFn: (variables: PromotionCreateInput) => createPromotion(variables),
         onSuccess: (newPromotion: Promotion) => {

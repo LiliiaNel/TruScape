@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Company: 'Company'
+  Company: 'Company',
+  Promotion: 'Promotion'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -77,6 +78,8 @@ export const CompanyScalarFieldEnum = {
   status: 'status',
   joinedDate: 'joinedDate',
   hasPromotions: 'hasPromotions',
+  sold: 'sold',
+  income: 'income',
   categoryId: 'categoryId',
   categoryTitle: 'categoryTitle',
   countryId: 'countryId',
@@ -85,6 +88,18 @@ export const CompanyScalarFieldEnum = {
 } as const
 
 export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]
+
+
+export const PromotionScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  discount: 'discount',
+  companyId: 'companyId',
+  avatar: 'avatar'
+} as const
+
+export type PromotionScalarFieldEnum = (typeof PromotionScalarFieldEnum)[keyof typeof PromotionScalarFieldEnum]
 
 
 export const SortOrder = {

@@ -14,14 +14,13 @@ export default async function Page({ params }: PageProps) {
 
     await queryClient.prefetchQuery({
         queryKey: ['companies', params.id],
-        queryFn: () => getCompany(params.id, { cache: 'no-store' }),
+        queryFn: () => getCompany(params.id),
         staleTime: 10 * 1000,
     });
 
     await queryClient.prefetchQuery({
         queryKey: ['promotions', params.id],
-        queryFn: () =>
-            getPromotions({ companyId: params.id }, { cache: 'no-store' }),
+        queryFn: () => getPromotions({ companyId: params.id }),
         staleTime: 10 * 1000,
     });
 
