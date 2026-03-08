@@ -30,6 +30,8 @@ export default async function Page({ params }: PageProps) {
     if (!company) {
         notFound();
     }
+    console.log('company id:', id);
+    console.log('company data:', company);
 
     const dehydratedState = dehydrate(queryClient);
     return (

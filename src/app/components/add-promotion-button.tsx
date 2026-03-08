@@ -18,7 +18,7 @@ export default function AddPromotionButton({
             console.warn('Cannot add promotion: companyId is missing');
             return;
         }
-        router.push(`/companies/${companyId}/new-promotion`);
+        router.push(`/companies/${companyId}/new`);
     };
 
     return (
