@@ -2,11 +2,11 @@
 
 import { Form, Formik } from 'formik';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { createPromotion, getCompany } from '@/lib/api';
+import { fetchCompany, createPromotion } from '@/lib/api-client';
 import Button from '@/app/components/button';
 import InputField from '@/app/components/input-field';
 import LogoUploader from '@/app/components/logo-uploader';
-import type { Promotion } from '@/lib/api';
+import type { Promotion } from '@/lib/types';
 
 type PromotionCreateInput = Omit<Promotion, 'id'>;
 
@@ -32,12 +32,10 @@ export default function PromotionForm({companyId, onSubmit,}: PromotionFormProps
 
     const { data: company } = useQuery({
         queryKey: ['companies', companyId],
-        queryFn: () => getCompany(companyId),
+        queryFn: () => fetchCompany(companyId),
         staleTime: 10 * 1000,
         enabled: !!companyId,
     });
-
-    // useMutation - hook like useQuery but for post/create/delete
 
     const { mutateAsync, isPending } = useMutation({
         mutationFn: (variables: PromotionCreateInput) => createPromotion(variables),

@@ -1,5 +1,5 @@
 import StatCard, { StatCardType } from '@/app/components/stat-card';
-import {Company, getCategories, getCompanies} from '@/lib/api';
+import {getCategories, getCompanies} from '@/lib/api';
 import {getCountById} from '@/lib/utils/getCountById';
 import DashboardCard from '@/app/components/dashboard-card';
 

@@ -425,6 +425,14 @@ export type PromotionUncheckedUpdateManyWithoutCompanyNestedInput = {
   deleteMany?: Prisma.PromotionScalarWhereInput | Prisma.PromotionScalarWhereInput[]
 }
 
+export type FloatFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type PromotionCreateWithoutCompanyInput = {
   id?: string
   title: string

@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client"
-  output   = "../app/generated/prisma"
+  output   = "../src/lib/generated/prisma"
 }
 
 datasource db {
@@ -8,20 +8,20 @@ datasource db {
 }
 
 model Company {
-  id            String       @id @default(cuid())
+  id            String        @id @default(cuid())
   title         String
   description   String?
   status        CompanyStatus
   joinedDate    DateTime?
-  hasPromotions Boolean      @default(false)
+  hasPromotions Boolean       @default(false)
   promotions    Promotion[]
-  sold          Int    @default(0)
-  income        Float  @default(0)
   categoryId    String?
   categoryTitle String?
   countryId     String?
   countryTitle  String?
   avatar        String?
+  sold          Int           @default(0)
+  income        Decimal       @default(0)
 
   @@map("companies")
 }
@@ -33,12 +33,15 @@ enum CompanyStatus {
   suspended
 }
 
+
 model Promotion {
   id          String   @id @default(cuid())
   title       String
   description String
   discount    Float
   companyId   String
-  company    Company   @relation(fields: [companyId], references: [id])
+  company     Company  @relation(fields: [companyId], references: [id])
   avatar      String?
+
+  @@map("promotions")
 }

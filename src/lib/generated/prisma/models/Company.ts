@@ -28,12 +28,12 @@ export type AggregateCompany = {
 
 export type CompanyAvgAggregateOutputType = {
   sold: number | null
-  income: number | null
+  income: runtime.Decimal | null
 }
 
 export type CompanySumAggregateOutputType = {
   sold: number | null
-  income: number | null
+  income: runtime.Decimal | null
 }
 
 export type CompanyMinAggregateOutputType = {
@@ -43,13 +43,13 @@ export type CompanyMinAggregateOutputType = {
   status: $Enums.CompanyStatus | null
   joinedDate: Date | null
   hasPromotions: boolean | null
-  sold: number | null
-  income: number | null
   categoryId: string | null
   categoryTitle: string | null
   countryId: string | null
   countryTitle: string | null
   avatar: string | null
+  sold: number | null
+  income: runtime.Decimal | null
 }
 
 export type CompanyMaxAggregateOutputType = {
@@ -59,13 +59,13 @@ export type CompanyMaxAggregateOutputType = {
   status: $Enums.CompanyStatus | null
   joinedDate: Date | null
   hasPromotions: boolean | null
-  sold: number | null
-  income: number | null
   categoryId: string | null
   categoryTitle: string | null
   countryId: string | null
   countryTitle: string | null
   avatar: string | null
+  sold: number | null
+  income: runtime.Decimal | null
 }
 
 export type CompanyCountAggregateOutputType = {
@@ -75,13 +75,13 @@ export type CompanyCountAggregateOutputType = {
   status: number
   joinedDate: number
   hasPromotions: number
-  sold: number
-  income: number
   categoryId: number
   categoryTitle: number
   countryId: number
   countryTitle: number
   avatar: number
+  sold: number
+  income: number
   _all: number
 }
 
@@ -103,13 +103,13 @@ export type CompanyMinAggregateInputType = {
   status?: true
   joinedDate?: true
   hasPromotions?: true
-  sold?: true
-  income?: true
   categoryId?: true
   categoryTitle?: true
   countryId?: true
   countryTitle?: true
   avatar?: true
+  sold?: true
+  income?: true
 }
 
 export type CompanyMaxAggregateInputType = {
@@ -119,13 +119,13 @@ export type CompanyMaxAggregateInputType = {
   status?: true
   joinedDate?: true
   hasPromotions?: true
-  sold?: true
-  income?: true
   categoryId?: true
   categoryTitle?: true
   countryId?: true
   countryTitle?: true
   avatar?: true
+  sold?: true
+  income?: true
 }
 
 export type CompanyCountAggregateInputType = {
@@ -135,13 +135,13 @@ export type CompanyCountAggregateInputType = {
   status?: true
   joinedDate?: true
   hasPromotions?: true
-  sold?: true
-  income?: true
   categoryId?: true
   categoryTitle?: true
   countryId?: true
   countryTitle?: true
   avatar?: true
+  sold?: true
+  income?: true
   _all?: true
 }
 
@@ -238,13 +238,13 @@ export type CompanyGroupByOutputType = {
   status: $Enums.CompanyStatus
   joinedDate: Date | null
   hasPromotions: boolean
-  sold: number
-  income: number
   categoryId: string | null
   categoryTitle: string | null
   countryId: string | null
   countryTitle: string | null
   avatar: string | null
+  sold: number
+  income: runtime.Decimal
   _count: CompanyCountAggregateOutputType | null
   _avg: CompanyAvgAggregateOutputType | null
   _sum: CompanySumAggregateOutputType | null
@@ -277,13 +277,13 @@ export type CompanyWhereInput = {
   status?: Prisma.EnumCompanyStatusFilter<"Company"> | $Enums.CompanyStatus
   joinedDate?: Prisma.DateTimeNullableFilter<"Company"> | Date | string | null
   hasPromotions?: Prisma.BoolFilter<"Company"> | boolean
-  sold?: Prisma.IntFilter<"Company"> | number
-  income?: Prisma.FloatFilter<"Company"> | number
   categoryId?: Prisma.StringNullableFilter<"Company"> | string | null
   categoryTitle?: Prisma.StringNullableFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableFilter<"Company"> | string | null
   countryTitle?: Prisma.StringNullableFilter<"Company"> | string | null
   avatar?: Prisma.StringNullableFilter<"Company"> | string | null
+  sold?: Prisma.IntFilter<"Company"> | number
+  income?: Prisma.DecimalFilter<"Company"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionListRelationFilter
 }
 
@@ -294,13 +294,13 @@ export type CompanyOrderByWithRelationInput = {
   status?: Prisma.SortOrder
   joinedDate?: Prisma.SortOrderInput | Prisma.SortOrder
   hasPromotions?: Prisma.SortOrder
-  sold?: Prisma.SortOrder
-  income?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   countryId?: Prisma.SortOrderInput | Prisma.SortOrder
   countryTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  sold?: Prisma.SortOrder
+  income?: Prisma.SortOrder
   promotions?: Prisma.PromotionOrderByRelationAggregateInput
 }
 
@@ -314,13 +314,13 @@ export type CompanyWhereUniqueInput = Prisma.AtLeast<{
   status?: Prisma.EnumCompanyStatusFilter<"Company"> | $Enums.CompanyStatus
   joinedDate?: Prisma.DateTimeNullableFilter<"Company"> | Date | string | null
   hasPromotions?: Prisma.BoolFilter<"Company"> | boolean
-  sold?: Prisma.IntFilter<"Company"> | number
-  income?: Prisma.FloatFilter<"Company"> | number
   categoryId?: Prisma.StringNullableFilter<"Company"> | string | null
   categoryTitle?: Prisma.StringNullableFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableFilter<"Company"> | string | null
   countryTitle?: Prisma.StringNullableFilter<"Company"> | string | null
   avatar?: Prisma.StringNullableFilter<"Company"> | string | null
+  sold?: Prisma.IntFilter<"Company"> | number
+  income?: Prisma.DecimalFilter<"Company"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionListRelationFilter
 }, "id">
 
@@ -331,13 +331,13 @@ export type CompanyOrderByWithAggregationInput = {
   status?: Prisma.SortOrder
   joinedDate?: Prisma.SortOrderInput | Prisma.SortOrder
   hasPromotions?: Prisma.SortOrder
-  sold?: Prisma.SortOrder
-  income?: Prisma.SortOrder
   categoryId?: Prisma.SortOrderInput | Prisma.SortOrder
   categoryTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   countryId?: Prisma.SortOrderInput | Prisma.SortOrder
   countryTitle?: Prisma.SortOrderInput | Prisma.SortOrder
   avatar?: Prisma.SortOrderInput | Prisma.SortOrder
+  sold?: Prisma.SortOrder
+  income?: Prisma.SortOrder
   _count?: Prisma.CompanyCountOrderByAggregateInput
   _avg?: Prisma.CompanyAvgOrderByAggregateInput
   _max?: Prisma.CompanyMaxOrderByAggregateInput
@@ -355,13 +355,13 @@ export type CompanyScalarWhereWithAggregatesInput = {
   status?: Prisma.EnumCompanyStatusWithAggregatesFilter<"Company"> | $Enums.CompanyStatus
   joinedDate?: Prisma.DateTimeNullableWithAggregatesFilter<"Company"> | Date | string | null
   hasPromotions?: Prisma.BoolWithAggregatesFilter<"Company"> | boolean
-  sold?: Prisma.IntWithAggregatesFilter<"Company"> | number
-  income?: Prisma.FloatWithAggregatesFilter<"Company"> | number
   categoryId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   categoryTitle?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   countryId?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   countryTitle?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
   avatar?: Prisma.StringNullableWithAggregatesFilter<"Company"> | string | null
+  sold?: Prisma.IntWithAggregatesFilter<"Company"> | number
+  income?: Prisma.DecimalWithAggregatesFilter<"Company"> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyCreateInput = {
@@ -371,13 +371,13 @@ export type CompanyCreateInput = {
   status: $Enums.CompanyStatus
   joinedDate?: Date | string | null
   hasPromotions?: boolean
-  sold?: number
-  income?: number
   categoryId?: string | null
   categoryTitle?: string | null
   countryId?: string | null
   countryTitle?: string | null
   avatar?: string | null
+  sold?: number
+  income?: runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionCreateNestedManyWithoutCompanyInput
 }
 
@@ -388,13 +388,13 @@ export type CompanyUncheckedCreateInput = {
   status: $Enums.CompanyStatus
   joinedDate?: Date | string | null
   hasPromotions?: boolean
-  sold?: number
-  income?: number
   categoryId?: string | null
   categoryTitle?: string | null
   countryId?: string | null
   countryTitle?: string | null
   avatar?: string | null
+  sold?: number
+  income?: runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionUncheckedCreateNestedManyWithoutCompanyInput
 }
 
@@ -405,13 +405,13 @@ export type CompanyUpdateInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionUpdateManyWithoutCompanyNestedInput
 }
 
@@ -422,13 +422,13 @@ export type CompanyUncheckedUpdateInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   promotions?: Prisma.PromotionUncheckedUpdateManyWithoutCompanyNestedInput
 }
 
@@ -439,13 +439,13 @@ export type CompanyCreateManyInput = {
   status: $Enums.CompanyStatus
   joinedDate?: Date | string | null
   hasPromotions?: boolean
-  sold?: number
-  income?: number
   categoryId?: string | null
   categoryTitle?: string | null
   countryId?: string | null
   countryTitle?: string | null
   avatar?: string | null
+  sold?: number
+  income?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyUpdateManyMutationInput = {
@@ -455,13 +455,13 @@ export type CompanyUpdateManyMutationInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyUncheckedUpdateManyInput = {
@@ -471,13 +471,13 @@ export type CompanyUncheckedUpdateManyInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyCountOrderByAggregateInput = {
@@ -487,13 +487,13 @@ export type CompanyCountOrderByAggregateInput = {
   status?: Prisma.SortOrder
   joinedDate?: Prisma.SortOrder
   hasPromotions?: Prisma.SortOrder
-  sold?: Prisma.SortOrder
-  income?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   categoryTitle?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   countryTitle?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  sold?: Prisma.SortOrder
+  income?: Prisma.SortOrder
 }
 
 export type CompanyAvgOrderByAggregateInput = {
@@ -508,13 +508,13 @@ export type CompanyMaxOrderByAggregateInput = {
   status?: Prisma.SortOrder
   joinedDate?: Prisma.SortOrder
   hasPromotions?: Prisma.SortOrder
-  sold?: Prisma.SortOrder
-  income?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   categoryTitle?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   countryTitle?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  sold?: Prisma.SortOrder
+  income?: Prisma.SortOrder
 }
 
 export type CompanyMinOrderByAggregateInput = {
@@ -524,13 +524,13 @@ export type CompanyMinOrderByAggregateInput = {
   status?: Prisma.SortOrder
   joinedDate?: Prisma.SortOrder
   hasPromotions?: Prisma.SortOrder
-  sold?: Prisma.SortOrder
-  income?: Prisma.SortOrder
   categoryId?: Prisma.SortOrder
   categoryTitle?: Prisma.SortOrder
   countryId?: Prisma.SortOrder
   countryTitle?: Prisma.SortOrder
   avatar?: Prisma.SortOrder
+  sold?: Prisma.SortOrder
+  income?: Prisma.SortOrder
 }
 
 export type CompanySumOrderByAggregateInput = {
@@ -571,12 +571,12 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type FloatFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
+export type DecimalFieldUpdateOperationsInput = {
+  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyCreateNestedOneWithoutPromotionsInput = {
@@ -600,13 +600,13 @@ export type CompanyCreateWithoutPromotionsInput = {
   status: $Enums.CompanyStatus
   joinedDate?: Date | string | null
   hasPromotions?: boolean
-  sold?: number
-  income?: number
   categoryId?: string | null
   categoryTitle?: string | null
   countryId?: string | null
   countryTitle?: string | null
   avatar?: string | null
+  sold?: number
+  income?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyUncheckedCreateWithoutPromotionsInput = {
@@ -616,13 +616,13 @@ export type CompanyUncheckedCreateWithoutPromotionsInput = {
   status: $Enums.CompanyStatus
   joinedDate?: Date | string | null
   hasPromotions?: boolean
-  sold?: number
-  income?: number
   categoryId?: string | null
   categoryTitle?: string | null
   countryId?: string | null
   countryTitle?: string | null
   avatar?: string | null
+  sold?: number
+  income?: runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyCreateOrConnectWithoutPromotionsInput = {
@@ -648,13 +648,13 @@ export type CompanyUpdateWithoutPromotionsInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 export type CompanyUncheckedUpdateWithoutPromotionsInput = {
@@ -664,13 +664,13 @@ export type CompanyUncheckedUpdateWithoutPromotionsInput = {
   status?: Prisma.EnumCompanyStatusFieldUpdateOperationsInput | $Enums.CompanyStatus
   joinedDate?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   hasPromotions?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  sold?: Prisma.IntFieldUpdateOperationsInput | number
-  income?: Prisma.FloatFieldUpdateOperationsInput | number
   categoryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categoryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   countryTitle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sold?: Prisma.IntFieldUpdateOperationsInput | number
+  income?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
 
@@ -711,13 +711,13 @@ export type CompanySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   status?: boolean
   joinedDate?: boolean
   hasPromotions?: boolean
-  sold?: boolean
-  income?: boolean
   categoryId?: boolean
   categoryTitle?: boolean
   countryId?: boolean
   countryTitle?: boolean
   avatar?: boolean
+  sold?: boolean
+  income?: boolean
   promotions?: boolean | Prisma.Company$promotionsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["company"]>
@@ -729,13 +729,13 @@ export type CompanySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   joinedDate?: boolean
   hasPromotions?: boolean
-  sold?: boolean
-  income?: boolean
   categoryId?: boolean
   categoryTitle?: boolean
   countryId?: boolean
   countryTitle?: boolean
   avatar?: boolean
+  sold?: boolean
+  income?: boolean
 }, ExtArgs["result"]["company"]>
 
 export type CompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -745,13 +745,13 @@ export type CompanySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   status?: boolean
   joinedDate?: boolean
   hasPromotions?: boolean
-  sold?: boolean
-  income?: boolean
   categoryId?: boolean
   categoryTitle?: boolean
   countryId?: boolean
   countryTitle?: boolean
   avatar?: boolean
+  sold?: boolean
+  income?: boolean
 }, ExtArgs["result"]["company"]>
 
 export type CompanySelectScalar = {
@@ -761,16 +761,16 @@ export type CompanySelectScalar = {
   status?: boolean
   joinedDate?: boolean
   hasPromotions?: boolean
-  sold?: boolean
-  income?: boolean
   categoryId?: boolean
   categoryTitle?: boolean
   countryId?: boolean
   countryTitle?: boolean
   avatar?: boolean
+  sold?: boolean
+  income?: boolean
 }
 
-export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "status" | "joinedDate" | "hasPromotions" | "sold" | "income" | "categoryId" | "categoryTitle" | "countryId" | "countryTitle" | "avatar", ExtArgs["result"]["company"]>
+export type CompanyOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "status" | "joinedDate" | "hasPromotions" | "categoryId" | "categoryTitle" | "countryId" | "countryTitle" | "avatar" | "sold" | "income", ExtArgs["result"]["company"]>
 export type CompanyInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   promotions?: boolean | Prisma.Company$promotionsArgs<ExtArgs>
   _count?: boolean | Prisma.CompanyCountOutputTypeDefaultArgs<ExtArgs>
@@ -790,13 +790,13 @@ export type $CompanyPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     status: $Enums.CompanyStatus
     joinedDate: Date | null
     hasPromotions: boolean
-    sold: number
-    income: number
     categoryId: string | null
     categoryTitle: string | null
     countryId: string | null
     countryTitle: string | null
     avatar: string | null
+    sold: number
+    income: runtime.Decimal
   }, ExtArgs["result"]["company"]>
   composites: {}
 }
@@ -1227,13 +1227,13 @@ export interface CompanyFieldRefs {
   readonly status: Prisma.FieldRef<"Company", 'CompanyStatus'>
   readonly joinedDate: Prisma.FieldRef<"Company", 'DateTime'>
   readonly hasPromotions: Prisma.FieldRef<"Company", 'Boolean'>
-  readonly sold: Prisma.FieldRef<"Company", 'Int'>
-  readonly income: Prisma.FieldRef<"Company", 'Float'>
   readonly categoryId: Prisma.FieldRef<"Company", 'String'>
   readonly categoryTitle: Prisma.FieldRef<"Company", 'String'>
   readonly countryId: Prisma.FieldRef<"Company", 'String'>
   readonly countryTitle: Prisma.FieldRef<"Company", 'String'>
   readonly avatar: Prisma.FieldRef<"Company", 'String'>
+  readonly sold: Prisma.FieldRef<"Company", 'Int'>
+  readonly income: Prisma.FieldRef<"Company", 'Decimal'>
 }
     
 

@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import { getCompanies } from '@/lib/api';
+import { fetchCompanies } from '@/lib/api-client';
 import CompanyRow from '@/app/components/company-row';
 
 export interface CompanyTableProps {}
@@ -17,7 +17,7 @@ const headers = [
 export default function CompanyTable({ }: CompanyTableProps) {
     const { data } = useQuery({
         queryKey: ['companies'],
-        queryFn: () => getCompanies(),
+        queryFn: () => fetchCompanies(),
         staleTime: 10 * 1000,
     });
     return (

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import type { Promotion } from '@/lib/api';
+import type { Promotion } from '@/lib/types';
 
 export interface PromotionProps {
     promotion: Promotion;

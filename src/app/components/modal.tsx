@@ -1,7 +1,7 @@
 'use client';
-
+import React from 'react';
 import { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react';
 
 export interface ModalProps {
     children?: React.ReactNode;
@@ -11,13 +11,13 @@ export interface ModalProps {
 
 export default function Modal({ show, children, onClose }: ModalProps) {
     return (
-        <Transition.Root as={Fragment} show={show}>
+        <Transition show={show} as={Fragment}>
             <Dialog
                 as="div"
                 className="fixed inset-0 z-50 flex items-center"
                 onClose={onClose}
             >
-                <Transition.Child
+                <TransitionChild
                     as={Fragment}
                     enter="ease-out duration-300"
                     enterFrom="opacity-0"
@@ -27,11 +27,11 @@ export default function Modal({ show, children, onClose }: ModalProps) {
                     leaveTo="opacity-0"
                 >
                     <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
-                </Transition.Child>
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+                </TransitionChild>
+                <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
                     {children}
-                </Dialog.Panel>
+                </DialogPanel>
             </Dialog>
-        </Transition.Root>
+        </Transition>
     );
 }

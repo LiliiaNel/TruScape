@@ -1,62 +1,5 @@
-import prisma from "../../lib/prisma";
-
-export interface SummaryStats {
-    promotions: number;
-    categories: number;
-    newCompanies: number;
-    activeCompanies: number;
-}
-
-export interface SummarySales {
-    id: string;
-    companyId: string;
-    companyTitle: string;
-    sold: number;
-    income: number;
-}
-
-export interface Country {
-    id: string;
-    title: string;
-}
-
-export interface Category {
-    id: string;
-    title: string;
-}
-
-export enum CompanyStatus {
-    Active = 'active',
-    NotActive = 'notActive',
-    Pending = 'pending',
-    Suspended = 'suspended',
-}
-
-export interface Company {
-    id: string;
-    title: string;
-    description: string | null;
-    status: CompanyStatus;
-    joinedDate: string;
-    hasPromotions: boolean;
-    categoryId: string | null;
-    categoryTitle: string | null;
-    countryId: string | null;
-    countryTitle: string | null;
-    avatar?: string;
-    sold: number;
-    income: number;
-}
-
-export interface Promotion {
-    id: string;
-    title: string;
-    description: string;
-    discount: number;
-    companyId: string;
-    companyTitle: string;
-    avatar?: string;
-}
+import prisma from "./prisma";
+import type { Company, Promotion, Category, Country, SummaryStats, SummarySales, CompanyStatus } from '@/lib/types';
 
 // Companies
 
@@ -78,7 +21,7 @@ export const getCompanies = async (): Promise<Company[]> => {
         countryTitle: c.countryTitle,
         avatar: c.avatar ?? undefined,
         sold: c.sold,
-        income: c.income,
+        income: c.income.toNumber(),
     }));
 };
 
@@ -101,7 +44,7 @@ export const getCompany = async (id: string): Promise<Company | null> => {
         countryTitle: c.countryTitle,
         avatar: c.avatar ?? undefined,
         sold: c.sold,
-        income: c.income,
+        income: c.income.toNumber(),
     };
 };
 
@@ -128,38 +71,25 @@ export const createCompany = async (
         countryTitle: c.countryTitle,
         avatar: c.avatar ?? undefined,
         sold: c.sold,
-        income: c.income,
+        income: c.income.toNumber(),
     };
 };
 
 // Categories
 export const getCategories = async (): Promise<Category[]> => {
-    const categories = await prisma.company
-        .findMany({ distinct: ["categoryId"] })
-        .then((list) =>
-            list.filter((c) => c.categoryId && c.categoryTitle)
-                .map((c) => (
-                    {
-                        id: c.categoryId!,
-                        title: c.categoryTitle!
-                    }))
-        );
-    return categories;
+    const list = await prisma.company.findMany({ distinct: ["categoryId"] });
+    return list
+        .filter((c) => c.categoryId && c.categoryTitle)
+        .map((c) => ({ id: c.categoryId!, title: c.categoryTitle! }));
 };
 
 // Countries
 
 export const getCountries = async (): Promise<Country[]> => {
-    const countries = await prisma.company
-        .findMany({ distinct: ["countryId"] })
-        .then((list) =>
-            list.filter((c) => c.countryId && c.countryTitle)
-                .map((c) => ({
-                id: c.countryId!,
-                title: c.countryTitle!,
-            }))
-        );
-    return countries;
+    const list = await prisma.company.findMany({ distinct: ["countryId"] });
+    return list
+        .filter((c) => c.countryId && c.countryTitle)
+        .map((c) => ({ id: c.countryId!, title: c.countryTitle! }));
 };
 
 // Sales
@@ -171,7 +101,7 @@ export const getSummarySales = async (): Promise<SummarySales[]> => {
         companyId: c.id,
         companyTitle: c.title,
         sold: c.sold,
-        income: c.income,
+        income: c.income.toNumber(),
     }));
 };
 
@@ -219,7 +149,6 @@ export const createPromotion = async (
 // Summary Stats
 
 export const getSummaryStats = async (): Promise<SummaryStats> => {
-    const companies = await prisma.company.count();
     const promotions = await prisma.company.count({ where: { hasPromotions: true } });
     const categoryGroups = await prisma.company.groupBy({ by: ["categoryId"] });
     const categories = categoryGroups.length;

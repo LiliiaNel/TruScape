@@ -78,13 +78,13 @@ export const CompanyScalarFieldEnum = {
   status: 'status',
   joinedDate: 'joinedDate',
   hasPromotions: 'hasPromotions',
-  sold: 'sold',
-  income: 'income',
   categoryId: 'categoryId',
   categoryTitle: 'categoryTitle',
   countryId: 'countryId',
   countryTitle: 'countryTitle',
-  avatar: 'avatar'
+  avatar: 'avatar',
+  sold: 'sold',
+  income: 'income'
 } as const
 
 export type CompanyScalarFieldEnum = (typeof CompanyScalarFieldEnum)[keyof typeof CompanyScalarFieldEnum]

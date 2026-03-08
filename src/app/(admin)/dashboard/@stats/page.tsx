@@ -1,4 +1,5 @@
-import { getSummaryStats, SummaryStats } from '@/lib/api';
+import { getSummaryStats } from '@/lib/api';
+import {SummaryStats} from "@/lib/types";
 import StatCard, { StatCardType } from '@/app/components/stat-card';
 import Link from "next/link";
 

@@ -4,7 +4,8 @@ import { useRouter } from 'next/navigation';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import CompanyForm, { CompanyFieldValues } from '@/app/components/company-form';
 import Modal from '@/app/components/modal';
-import { createCompany, CompanyStatus } from '@/lib/api';
+import { CompanyStatus } from '@/lib/types';
+import { createCompany } from '@/lib/api-client';
 
 export default function Page() {
     const router = useRouter();
@@ -13,7 +14,7 @@ export default function Page() {
     const { mutateAsync } = useMutation({
         mutationFn: createCompany,
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['companies'] });
+            void queryClient.invalidateQueries({ queryKey: ['companies'] });
         },
     });
 
