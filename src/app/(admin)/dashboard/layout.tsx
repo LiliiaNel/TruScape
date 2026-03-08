@@ -2,6 +2,7 @@ import React from 'react';
 
 export interface LayoutProps {
     children: React.ReactNode;
+    header: React.ReactNode;
     stats: React.ReactNode;
     sales: React.ReactNode;
     categories: React.ReactNode;
@@ -11,6 +12,7 @@ export interface LayoutProps {
 
 export default function Layout({
                                    children,
+                                   header,
                                    stats,
                                    sales,
                                    categories,
@@ -19,6 +21,7 @@ export default function Layout({
                                }: LayoutProps) {
     return (
         <div>
+            {header}
             {children}
             <main className="grid grid-cols-12 gap-5 py-10 pl-10 pr-7">
                 <div className="col-span-12">{stats}</div>
