@@ -4,7 +4,7 @@ import type {
     Category,
     Country,
     SummaryStats,
-    SummarySales } from '@/lib/api';
+    SummarySales } from '@/lib/types';
 
 export const fetchCompanies = async (): Promise<Company[]> => {
     const res = await fetch('/api/companies');

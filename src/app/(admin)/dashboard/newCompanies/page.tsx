@@ -1,5 +1,3 @@
-import MagicButton from "@/app/components/magic-button";
-
 export interface PageProps {}
 
 function Page({} : PageProps) {
