@@ -1,36 +1,67 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TruScape CRM
 
-## Getting Started
+A modern CRM (Customer Relationship Management) admin dashboard built with Next.js, Prisma, and Supabase.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| | |
+|--------|----------|
+| Framework | Next.js 16 |
+| Language | TypeScript |
+| Database | Supabase (PostgreSQL) |
+| ORM | Prisma 7 |
+| Server state | TanStack Query |
+| Styles | Tailwind CSS |
+| Forms | Formik |
+| UI components | Headless UI |
+
+## Features
+
+- 📊 **Dashboard** — Summary stats, sales details, categories, countries, and promotions overview
+- 🏢 **Companies** — Browse, filter, and add companies with status tracking
+- 🎯 **Promotions** — View and create promotions per company
+- 🔄 **Real-time updates** —  UI updates with TanStack Query cache invalidation
+- 📱 **Parallel routes** — Navigation using Next.js parallel and intercepting routes
+
+## Upcoming Features
+
+- 🔐 **Authentication** — user login and protected routes
+- 👤 **User roles** — admin and viewer permissions
+- 📈 **Sales tracking** — sales data per company
+- 🖼️ **Image upload** — company and promotion avatars via Supabase Storage
+- 🔍 **Search & filters** — filter companies by status, category, country
+- 📄 **Pagination** — for large datasets 
+
+## Project Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+src/
+├── app/
+│   ├── (admin)/
+│   │   ├── companies/        # Companies pages
+│   │   │   ├── @header/      # Companies header
+│   │   │   ├── @toolbar/     # Search and actions toolbar
+│   │   │   ├── @modal/       # Intercepting modal routes
+│   │   │   └── [id]/         # Company detail page
+│   │   └── dashboard/        # Dashboard page with parallel route slots
+│   │       ├── @header/      # Dashboard header
+│   │       ├── @stats/       # Summary stats cards
+│   │       ├── @sales/       # Sales details table
+│   │       ├── @categories/  # Categories chart
+│   │       ├── @countries/   # Countries chart
+│   │       └── @promotions/  # Promotions table
+│   ├── api/                  # API routes (HTTP endpoints)
+│   │   ├── companies/
+│   │   └── promotions/
+│   └── components/           # UI components
+├── lib/
+│   ├── api.ts                # Server-side Prisma functions
+│   ├── api-client.ts         # Client-side api functions
+│   ├── types.ts              # Shared TypeScript interfaces
+│   ├── prisma.ts             # Prisma client singleton
+│   └── utils/                # Utility functions
+└── prisma/
+    ├── schema.prisma          # Database schema
+    ├── migrations/            # Database migrations
+    └── seed.ts                # Database seed data
+```
